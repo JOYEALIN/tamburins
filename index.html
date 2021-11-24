@@ -41,14 +41,17 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-
+        body{overflow:hidden;width:100%;}
         html,body{font-family: 'Noto Sans Kr', sans-serif;}
         .container{position:relative;background-color: #f8ead7;display:flex;flex-flow:row wrap;justify-content:center;padding:20px;}
         .logo h1 a{font-size:20px;font-weight:300;}
         /* .header{background-color: #f8ead7;} */
         .btn-nav i{position:absolute;top:7px;font-size:20px;padding:20px;}
-        .nav{position:absolute;top:0;left:0;background-color: aliceblue;width:50%;height:590.328px;z-index:1;display:none;}
-        .close-btn{position:absolute;left:20px;top:20px;font-size:30px;}
+        .btn-nav{cursor: pointer;}
+        .nav{position:absolute;top:0;left:0;background-color: aliceblue;width:50%;height:590.328px;z-index:1;transform:translate(-100%,0);}
+        .nav.active01{transform:translate(0,0);}
+        .close-btn{position:absolute;left:20px;top:20px;font-size:25px;cursor: pointer;}
+        
         .nav a{font-size:18px;font-weight:400;}
         .nav .top{position:absolute;top:70px;left:50px;}
         .nav ul a{color:#333;}
@@ -118,10 +121,18 @@
 
     <script>
         $(function(){
-            $('.btn-nav').click(function(){
-                $('.nav').slide
-            })
-        })
+           
+            $('.btn-nav').on({
+                'click':function(){
+                $('.nav').addClass('active01');
+            }
+        });
+        $('.close-btn').on({
+                'click':function(){
+                $('.nav').removeClass('active01');
+            }
+        });
+    })
     </script>
 </body>
 </html>
